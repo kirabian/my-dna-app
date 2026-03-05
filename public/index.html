@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DNA Ancestry Pro - Advanced Genomic Analysis</title>
+    <title>DNA Ancestry Pro - Advanced Biometric Analysis</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -59,6 +59,20 @@
             background: radial-gradient(circle at top center, #0f172a 0%, #020617 100%);
         }
 
+        .input-custom {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .input-custom:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
@@ -73,6 +87,7 @@
             border-radius: 4px;
         }
 
+        /* Animations */
         @keyframes slideIn {
             to {
                 opacity: 1;
@@ -85,23 +100,12 @@
                 transform: translateX(100%);
             }
         }
-
-        /* Drag Drop Styles */
-        .upload-zone {
-            border: 2px dashed rgba(56, 189, 248, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .upload-zone.drag-active {
-            border-color: #38bdf8;
-            background: rgba(56, 189, 248, 0.1);
-            transform: scale(1.02);
-        }
     </style>
 </head>
 
 <body class="bg-gradient-radial text-white min-h-screen py-8 px-4 md:px-8 relative overflow-x-hidden">
 
+    <!-- Decorative Elements -->
     <div
         class="fixed top-[-20%] left-[-10%] w-[60%] h-[60%] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none">
     </div>
@@ -112,99 +116,123 @@
     <div class="max-w-6xl w-full mx-auto z-10 relative">
         <header class="text-center mb-10 md:mb-16">
             <div
-                class="inline-block p-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 mb-4 items-center justify-center">
+                class="inline-block p-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-4 items-center justify-center">
                 <span
-                    class="text-xs font-bold text-emerald-400 tracking-widest px-4 py-1 flex items-center justify-center">
-                    <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse mr-2"></div>
-                    REAL GENOMIC ENGINE ACTIVE
+                    class="text-xs font-bold text-cyan-400 tracking-widest px-4 py-1 flex items-center justify-center">
+                    <div class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse mr-2"></div>
+                    DETERMINISTIC BIOMETRIC SYSTEM
                 </span>
             </div>
             <h1
-                class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-500 to-indigo-500 mb-4 tracking-tight drop-shadow-lg">
-                DNAx RAW ANALYZER
+                class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-500 to-indigo-500 mb-4 tracking-tight drop-shadow-lg">
+                DNA Ancestry Pro
             </h1>
             <p
                 class="text-slate-400 font-light text-sm md:text-base lg:text-lg tracking-wide max-w-3xl mx-auto px-4 mt-4 leading-relaxed">
-                Pemetaan genom sejati (True SNP Mapping). Silakan unggah file <b>Raw DNA Data</b> berekstensi <span
-                    class="text-cyan-400">.txt</span> atau <span class="text-cyan-400">.csv</span> yang didapat dari lab
-                (23andMe, MyHeritage, AncestryDNA, dll).
+                Platform identifikasi genetik komprehensif berbasis parameter unik algoritma *Quantum Deterministic*.
+                Masukkan biodata seakurat mungkin untuk kalkulasi 100% konsisten.
             </p>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-            <!-- Upload Zone -->
+            <!-- Input Form Card -->
             <div class="glass p-6 md:p-8 rounded-3xl relative overflow-hidden lg:col-span-5 flex flex-col shadow-2xl">
-                <h2 class="text-xl md:text-xl font-bold mb-6 flex items-center text-cyan-50">
+                <!-- Top Edge Highlight -->
+                <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-600"></div>
+
+                <h2 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center text-cyan-50 tracking-wide">
                     <svg class="w-5 h-5 md:w-6 md:h-6 text-cyan-400 mr-3" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
-                        </path>
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                     </svg>
-                    Upload Raw DNA Sequence
+                    Input Parameter Data
                 </h2>
 
-                <div id="dropZone"
-                    class="upload-zone flex-grow rounded-2xl bg-slate-900/40 p-8 flex flex-col items-center justify-center text-center cursor-pointer min-h-[300px]">
-                    <div
-                        class="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center mb-6 shadow-lg border border-slate-700 relative">
-                        <svg class="w-10 h-10 text-cyan-400 absolute" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                        <div
-                            class="absolute inset-0 border-2 border-cyan-500/0 rounded-full drop-ping transition-all duration-300">
+                <form id="dnaForm" class="space-y-4 md:space-y-5 flex-grow">
+                    <div class="group">
+                        <label
+                            class="block text-xs font-bold text-slate-400 mb-1.5 uppercase tracking-widest group-focus-within:text-cyan-400 transition-colors">Nama
+                            Lengkap</label>
+                        <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl input-custom text-sm"
+                            placeholder="e.g. Budi Santoso">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 md:gap-5">
+                        <div class="group">
+                            <label
+                                class="block text-xs font-bold text-slate-400 mb-1.5 uppercase tracking-widest group-focus-within:text-cyan-400 transition-colors">Umur</label>
+                            <div class="relative">
+                                <input type="number" id="age" required min="1" max="120"
+                                    class="w-full px-4 py-3 rounded-xl input-custom text-sm pr-12" placeholder="25">
+                                <span
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold">THN</span>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <label
+                                class="block text-xs font-bold text-slate-400 mb-1.5 uppercase tracking-widest group-focus-within:text-cyan-400 transition-colors">Gol.
+                                Darah</label>
+                            <select id="bloodType" required
+                                class="w-full px-4 py-3 rounded-xl input-custom text-sm appearance-none cursor-pointer">
+                                <option value="" disabled selected>Pilih Tipe</option>
+                                <option value="A">Tipe A</option>
+                                <option value="B">Tipe B</option>
+                                <option value="AB">Tipe AB</option>
+                                <option value="O">Tipe O</option>
+                            </select>
                         </div>
                     </div>
 
-                    <h3 class="text-lg font-bold text-white mb-2" id="dzTitle">Drag & Drop DNA File</h3>
-                    <p class="text-sm text-slate-400 mb-6" id="dzDesc">Atau klik area ini untuk mencari file lab
-                        .txt/.csv</p>
+                    <div class="grid grid-cols-2 gap-4 md:gap-5">
+                        <div class="group">
+                            <label
+                                class="block text-xs font-bold text-slate-400 mb-1.5 uppercase tracking-widest group-focus-within:text-cyan-400 transition-colors">Tinggi</label>
+                            <div class="relative">
+                                <input type="number" id="height" required min="50" max="250"
+                                    class="w-full px-4 py-3 rounded-xl input-custom text-sm pr-10" placeholder="170">
+                                <span
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold">CM</span>
+                            </div>
+                        </div>
+                        <div class="group">
+                            <label
+                                class="block text-xs font-bold text-slate-400 mb-1.5 uppercase tracking-widest group-focus-within:text-cyan-400 transition-colors">Berat</label>
+                            <div class="relative">
+                                <input type="number" id="weight" required min="20" max="300"
+                                    class="w-full px-4 py-3 rounded-xl input-custom text-sm pr-10" placeholder="65">
+                                <span
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold">KG</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
 
-                    <input type="file" id="fileInput" class="hidden" accept=".txt,.csv" />
-
-                    <button type="button"
-                        class="bg-slate-800 hover:bg-slate-700 text-cyan-300 px-6 py-2.5 rounded-xl text-sm font-semibold border border-slate-600 transition-colors shadow-inner">
-                        Browse Files
-                    </button>
-                    <p class="text-[10px] text-slate-500 mt-6 max-w-[200px]">Semua ekstraksi data genetik dilakukan
-                        secara lokal (client-side) demi privasi.</p>
-                </div>
-
-                <!-- Parse Status UI -->
-                <div id="parseStatus" class="hidden mt-6 bg-slate-900/60 border border-emerald-500/30 rounded-xl p-4">
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center">
-                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="mt-8 relative mt-auto">
+                    <button type="submit" form="dnaForm" id="btnAction"
+                        class="w-full relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-6 py-4 rounded-xl font-black text-sm md:text-base tracking-[0.2em] transition-all transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] shadow-lg group">
+                        <span class="relative z-10 flex items-center justify-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
-                            File Siap (Valid)
+                            MULAI ANALISA GENETIK
                         </span>
-                        <span id="fileNameDisplay"
-                            class="text-xs text-slate-300 truncate max-w-[120px]">genome_x...txt</span>
-                    </div>
-                    <div class="flex justify-between items-center text-xs text-slate-400 mb-4">
-                        <span id="fileSizeDisplay">Size: 15MB</span>
-                        <span id="snpCountDisplay">Markers: 602,012 SNPs</span>
-                    </div>
-                    <button type="button" id="btnAction"
-                        class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 py-3 rounded-lg font-bold tracking-[0.1em] transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] shadow-inner text-sm flex justify-center items-center">
-                        EKSTRAK & ANALISIS SERVER
+                        <!-- Button Shine Effect -->
+                        <div
+                            class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-[shimmer_1.5s_infinite]">
+                        </div>
                     </button>
+                    <p id="errorMsg" class="text-rose-400 text-xs md:text-sm font-medium mt-3 text-center hidden"></p>
                 </div>
-
-                <p id="errorMsg"
-                    class="text-rose-400 text-xs md:text-sm font-medium text-center hidden mt-4 bg-rose-900/30 py-2 rounded-lg border border-rose-500/30">
-                </p>
             </div>
 
             <!-- Result Card -->
             <div id="resultCard"
                 class="glass p-5 md:p-8 rounded-3xl relative hidden opacity-0 transition-all duration-1000 lg:col-span-7 flex flex-col shadow-2xl scale-95 origin-center">
 
+                <!-- Scanning Overlay -->
                 <div id="scanningOverlay"
                     class="absolute inset-0 bg-slate-900/95 backdrop-blur-md z-30 flex flex-col items-center justify-center rounded-3xl hidden">
                     <div
@@ -222,94 +250,104 @@
                         <div class="scan-line rounded-full overflow-hidden"></div>
                     </div>
                     <h3
-                        class="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 tracking-[0.2em] md:tracking-[0.3em] animate-pulse">
+                        class="text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 tracking-[0.2em] md:tracking-[0.3em] animate-pulse">
                         PROCESSING</h3>
-                    <p class="text-emerald-200/60 font-mono text-xs md:text-sm mt-3 tracking-wider text-center px-4"
-                        id="scanningText">KIRIM PAYLOAD SNP KE SERVER...</p>
+                    <p class="text-cyan-200/60 font-mono text-xs md:text-sm mt-3 tracking-wider text-center px-4"
+                        id="scanningText">EXTRACTING GENETIC MARKERS...</p>
                 </div>
 
                 <div id="resultContent" class="flex flex-col hidden relative">
+                    <!-- Result Header -->
                     <div
                         class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 pb-6 border-b border-white/10 w-full">
                         <div class="mb-4 sm:mb-0">
                             <p
-                                class="text-[9px] md:text-[10px] text-emerald-500 font-bold uppercase tracking-[0.3em] mb-1">
-                                DATA RAW VALIDATED</p>
+                                class="text-[9px] md:text-[10px] text-cyan-500 font-bold uppercase tracking-[0.3em] mb-1">
+                                HASIL ANALISA UNTUK</p>
                             <h3 class="text-xl md:text-3xl font-black text-white capitalize tracking-tight"
-                                id="resultName">Genome Profile</h3>
+                                id="resultName">Nama Pasien</h3>
                         </div>
                         <div
-                            class="bg-slate-900/80 p-3 rounded-xl border border-emerald-700/50 inline-block w-full sm:w-auto">
+                            class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 inline-block w-full sm:w-auto">
                             <p
-                                class="text-[10px] md:text-xs text-emerald-400 font-bold uppercase tracking-widest flex items-center sm:justify-end">
-                                <svg class="w-3 h-3 md:w-4 md:h-4 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                        clip-rule="evenodd"></path>
+                                class="text-[10px] md:text-xs text-cyan-400 font-bold uppercase tracking-widest flex items-center sm:justify-end">
+                                <svg class="w-3 h-3 md:w-4 md:h-4 mr-1.5" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
-                                AIMs DB SYNCED
+                                ID GENOMIK
                             </p>
-                            <p
-                                class="text-[9px] md:text-[11px] text-slate-400 mt-1.5 font-mono tracking-widest sm:text-right">
-                                Hits: <span id="genomicId" class="text-emerald-300">0</span> SNPs</p>
+                            <p class="text-[9px] md:text-[11px] text-slate-400 mt-1.5 font-mono tracking-widest sm:text-right"
+                                id="genomicId">#DNA-XX</p>
                         </div>
                     </div>
 
+                    <!-- Main Visualization Area -->
                     <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10 w-full mb-8">
+                        <!-- Chart Container -->
                         <div
                             class="relative w-full max-w-[240px] md:max-w-none md:w-1/2 aspect-square flex justify-center items-center">
                             <canvas id="chart"></canvas>
+                            <!-- Center Label overlay for doughnut -->
                             <div
                                 class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none drop-shadow-md">
                                 <span class="text-3xl lg:text-5xl font-black text-white tracking-tighter"
                                     id="primaryPercent">--%</span>
                                 <span
-                                    class="text-[10px] lg:text-xs font-bold text-emerald-400 uppercase tracking-widest mt-1 max-w-[100px] lg:max-w-[120px] text-center"
+                                    class="text-[10px] lg:text-xs font-bold text-cyan-400 uppercase tracking-widest mt-1 max-w-[100px] lg:max-w-[120px] text-center"
                                     id="primaryRegion">PRIMARY</span>
                             </div>
                         </div>
 
+                        <!-- Details List -->
                         <div class="w-full md:w-1/2 flex flex-col h-full md:max-h-[300px]">
                             <h4
                                 class="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center">
-                                <span class="w-6 md:w-8 h-px bg-slate-600 mr-2 md:mr-3"></span> Komposisi Genetik Asli
+                                <span class="w-6 md:w-8 h-px bg-slate-600 mr-2 md:mr-3"></span> Komposisi Etnis
                             </h4>
                             <div id="list"
                                 class="space-y-2 md:space-y-3 overflow-y-auto pr-1 md:pr-2 custom-scrollbar flex-grow min-h-[150px]">
+                                <!-- List items injected here via JS -->
                             </div>
                         </div>
                     </div>
 
+                    <!-- Storyteller / Ancestral Background -->
                     <div class="mt-4 pt-6 border-t border-white/10">
                         <h4
-                            class="text-xs md:text-sm font-bold text-emerald-400 uppercase tracking-widest mb-4 flex items-center">
+                            class="text-xs md:text-sm font-bold text-cyan-400 uppercase tracking-widest mb-4 flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                </path>
                             </svg>
-                            Penjelasan Medis Asal Marka
+                            Tinjauan Sejarah Leluhur Utama
                         </h4>
 
                         <div
                             class="relative p-5 md:p-6 bg-slate-800/50 rounded-2xl border border-slate-700/50 overflow-hidden group">
-                            <div class="absolute top-0 bottom-0 left-6 w-px bg-emerald-700/30 hidden sm:block"></div>
+                            <!-- Left Accent Barke -->
+                            <div class="absolute top-0 bottom-0 left-6 w-px bg-cyan-700/30 hidden sm:block"></div>
 
                             <div class="relative z-10 flex flex-col sm:flex-row gap-4 sm:gap-6 items-start">
+                                <!-- DNA Icon Avatar -->
                                 <div
-                                    class="hidden sm:flex shrink-0 w-12 h-12 bg-slate-900 rounded-full border-2 border-emerald-500 items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.4)] ml-[-20px] z-10">
-                                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor"
+                                    class="hidden sm:flex shrink-0 w-12 h-12 bg-slate-900 rounded-full border-2 border-cyan-500 items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.4)] ml-[-20px] z-10 bg-gradient-to-br from-slate-900 to-slate-800">
+                                    <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5">
                                         </path>
                                     </svg>
                                 </div>
+                                <!-- Text Content -->
                                 <div>
                                     <h5 class="text-lg md:text-xl font-bold text-white mb-2 pb-2 border-b border-slate-700 inline-block"
-                                        id="storyTitle">Titik Asal Dominan</h5>
+                                        id="storyTitle">Garis Keturunan Dominan</h5>
                                     <p class="text-slate-300 text-sm md:text-base leading-relaxed font-light"
                                         id="storyContent">
-                                        Memproses persilangan data SNP...
+                                        Memproses persilangan data historis...
                                     </p>
                                 </div>
                             </div>
@@ -319,9 +357,9 @@
             </div>
         </div>
 
-        <footer class="mt-12 md:mt-16 text-center pb-8">
-            <p class="text-slate-600 text-xs md:text-sm font-light tracking-wide">
-                &copy; <span id="year"></span> DNAx Analytics Corp. 100% Client-side Processing.
+        <footer class="mt-12 md:mt-16 text-center pb-8 border-t border-slate-800 pt-6">
+            <p class="text-slate-500 text-xs md:text-sm font-light tracking-wide uppercase">
+                &copy; <span id="year"></span> DNA Ancestry Pro. 100% Deterministic Engine.
             </p>
         </footer>
     </div>
@@ -329,192 +367,104 @@
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
         let myChart;
-        let parsedPayload = null;
-        let currentFileObj = null;
 
-        const dropZone = document.getElementById('dropZone');
-        const fileInput = document.getElementById('fileInput');
-        const errorMsg = document.getElementById('errorMsg');
-
-        // Drag events
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, preventDefaults, false);
-        });
-
-        function preventDefaults(e) {
+        document.getElementById('dnaForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            e.stopPropagation();
-        }
-
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropZone.addEventListener(eventName, () => dropZone.classList.add('drag-active'), false);
-        });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, () => dropZone.classList.remove('drag-active'), false);
-        });
-
-        dropZone.addEventListener('drop', handleDrop, false);
-        dropZone.addEventListener('click', () => fileInput.click());
-        fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
-
-        function handleDrop(e) {
-            let dt = e.dataTransfer;
-            let files = dt.files;
-            handleFiles(files);
-        }
-
-        function handleFiles(files) {
-            errorMsg.classList.add('hidden');
-            if (files.length > 0) {
-                const f = files[0];
-                const name = f.name.toLowerCase();
-                if (name.endsWith('.txt') || name.endsWith('.csv')) {
-                    currentFileObj = f;
-                    parseRawDNAFile(f);
-                } else {
-                    showError("Format file salah. Wajib berekstensi .txt atau .csv (File mentah 23andMe/Ancestry).");
-                }
-            }
-        }
-
-        function showError(msg) {
-            errorMsg.innerText = msg;
-            errorMsg.classList.remove('hidden');
-            document.getElementById('parseStatus').classList.add('hidden');
-            dropZone.classList.remove('hidden');
-        }
-
-        // --- Client-side DNA Parser ---
-        function parseRawDNAFile(file) {
-            document.getElementById('dzTitle').innerText = "Memilah Genetik...";
-            document.getElementById('dzDesc').innerText = "Membaca barisan nukleotida, harap tunggu.";
-
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                const text = e.target.result;
-                const lines = text.split('\n');
-                let snpData = {};
-                let snpCount = 0;
-
-                // Typical 23andme formats are tab separated. Ancestry is CSV.
-                for (let i = 0; i < lines.length; i++) {
-                    const line = lines[i].trim();
-                    if (line.startsWith('#') || line.length === 0) continue; // skip comments
-
-                    // Regex to extract rsID and Genotype. 
-                    // Usually cols: rsid, chromosome, position, genotype 
-                    // Matches both CSV and TSV broadly
-                    const parts = line.split(/[\t,]+/);
-                    if (parts.length >= 4) {
-                        const rsid = parts[0].replace(/"/g, '').trim();
-                        let genotype = parts[3].replace(/"/g, '').trim();
-                        // 23andMe often maps missing traits as -- or __
-                        if (rsid.startsWith('rs') && genotype.length >= 1 && !genotype.includes('-')) {
-                            // If it's a single allele, double it up for simplicity in our mock DB (A -> AA)
-                            if (genotype.length === 1) genotype = genotype + genotype;
-                            snpData[rsid] = genotype.toUpperCase();
-                            snpCount++;
-                        }
-                    }
-                }
-
-                if (snpCount < 10) {
-                    showError("Data terlalu sepi / format berantakan. File ini kemungkinan bukan Raw Data DNA standar (SNPs tidak terdeteksi).");
-                    document.getElementById('dzTitle').innerText = "Drag & Drop DNA File";
-                    document.getElementById('dzDesc').innerText = "Atau klik area ini untuk mencari file lab .txt/.csv";
-                    return;
-                }
-
-                // Success
-                const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
-                document.getElementById('fileNameDisplay').innerText = file.name;
-                document.getElementById('fileSizeDisplay').innerText = `Size: ${sizeMB} MB`;
-                document.getElementById('snpCountDisplay').innerText = `Total Marker: ${snpCount.toLocaleString()}`;
-
-                dropZone.classList.add('hidden');
-                document.getElementById('parseStatus').classList.remove('hidden');
-
-                // Prepare payload for backend. 
-                // Only send SNPs our mock DB cares about or limit to a few hundred so we don't break Netlify limits with 15MB json
-                // Actually since the mock DB only has ~20 marks, send only mapped ones to save bandwidth!
-                const aimList = ["rs1426654", "rs16891982", "rs3827760", "rs2814778", "rs12913832", "rs17822931", "rs4988235", "rs334", "rs671", "rs738409", "rs12203592", "rs2395182", "rs2476601", "rs429358", "rs6152"];
-                let payloadSNPs = {};
-                aimList.forEach(aim => {
-                    if (snpData[aim]) payloadSNPs[aim] = snpData[aim];
-                });
-
-                // If no exact AIMs matched, just send 2 random valid ones to trigger fallback error on server naturally
-                if (Object.keys(payloadSNPs).length === 0) {
-                    const sampleKeys = Object.keys(snpData).slice(0, 3);
-                    sampleKeys.forEach(k => payloadSNPs[k] = snpData[k]);
-                }
-
-                parsedPayload = {
-                    fileName: file.name,
-                    fileSize: sizeMB,
-                    snpSamples: payloadSNPs
-                };
-            };
-
-            reader.readAsText(file);
-        }
-
-        document.getElementById('btnAction').addEventListener('click', async () => {
-            if (!parsedPayload) return;
 
             const btn = document.getElementById('btnAction');
             const resultCard = document.getElementById('resultCard');
             const scanningOverlay = document.getElementById('scanningOverlay');
             const resultContent = document.getElementById('resultContent');
+            const errorMsg = document.getElementById('errorMsg');
+            const scanningText = document.getElementById('scanningText');
 
-            btn.innerHTML = `UPLOADING PAYLOAD... <svg class="w-4 h-4 ml-2 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+            errorMsg.classList.add('hidden');
+
+            const payload = {
+                name: document.getElementById('name').value,
+                age: document.getElementById('age').value,
+                height: document.getElementById('height').value,
+                weight: document.getElementById('weight').value,
+                bloodType: document.getElementById('bloodType').value,
+            };
+
+            const originalBtnContent = btn.innerHTML;
+            btn.innerHTML = `MENGOLAH DATA... <svg class="w-4 h-4 ml-2 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
             btn.disabled = true;
 
+            // Show Result Card Framework
             resultCard.classList.remove('hidden');
             setTimeout(() => {
                 resultCard.classList.remove('opacity-0', 'scale-95');
                 resultCard.classList.add('opacity-100', 'scale-100');
             }, 50);
 
+            // Show Scanning UI, Hide Content
             scanningOverlay.classList.remove('hidden');
             resultContent.classList.add('hidden');
 
+            // Sequential scanning text animation
+            const scanPhrases = [
+                "KALIBRASI DATA BIOMETRIK...",
+                "HASHING DETERMINISTIK PARAMETER...",
+                "SINKRONISASI DATABASE ETNIS GLOBAL...",
+                "FINALISASI PEMETAAN GENOMIK..."
+            ];
+            let phraseIndex = 0;
+            const textInterval = setInterval(() => {
+                if (phraseIndex < scanPhrases.length) {
+                    scanningText.innerText = scanPhrases[phraseIndex];
+                    phraseIndex++;
+                }
+            }, 600);
+
+
+            // Mobile scroll to view smoothly
             if (window.innerWidth < 1024) {
-                setTimeout(() => { resultCard.scrollIntoView({ behavior: "smooth", block: "start" }); }, 200);
+                setTimeout(() => {
+                    resultCard.scrollIntoView({ behavior: "smooth", block: "start" });
+                }, 200);
             }
 
             try {
-                const res = await fetch('/api', {
+                const res = await fetch('/api', { // Targeting netlify func endpoint
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(parsedPayload)
+                    body: JSON.stringify(payload)
                 });
 
                 const data = await res.json();
 
                 if (!res.ok) {
-                    throw new Error(data.error || "Gagal memproses Genotipe ke Server Database (Error).");
+                    throw new Error(data.error || "Gagal memproses data.");
                 }
 
+                // Simulate processing time 2.5s
                 setTimeout(() => {
+                    clearInterval(textInterval);
                     scanningOverlay.classList.add('hidden');
                     resultContent.classList.remove('hidden');
 
-                    document.getElementById('resultName').innerText = data.fileMetadata.name.split('.')[0];
-                    document.getElementById('genomicId').innerText = data.fileMetadata.validatedMarkers;
+                    document.getElementById('resultName').innerText = payload.name;
+                    document.getElementById('genomicId').innerText = data.hashId || '#DNA-VXT9';
 
                     document.getElementById('storyTitle').innerText = data.dominantRegion;
                     document.getElementById('storyContent').innerText = data.dominantStory;
 
                     renderUI(data.results);
-                }, 1000);
+
+                    btn.innerHTML = originalBtnContent;
+                    btn.disabled = false;
+
+                }, 2800);
 
             } catch (err) {
+                clearInterval(textInterval);
                 scanningOverlay.classList.add('hidden');
-                showError(err.message);
-                btn.innerHTML = `COBA LAGI`;
+                errorMsg.innerText = err.message;
+                errorMsg.classList.remove('hidden');
+
+                btn.innerHTML = originalBtnContent;
                 btn.disabled = false;
             }
         });
@@ -526,8 +476,10 @@
             const labels = Object.keys(results);
             const values = Object.values(results).map(v => v.percentage);
 
+            // Set Primary Stat in center of doughnut
             if (labels.length > 0) {
                 document.getElementById('primaryPercent').innerText = `${values[0]}%`;
+                // Get short name if too long
                 let shortLabel = labels[0].split('(')[0].trim().toUpperCase();
                 if (window.innerWidth < 768 && shortLabel.length > 10) {
                     shortLabel = shortLabel.substring(0, 10) + '...';
@@ -535,8 +487,8 @@
                 document.getElementById('primaryRegion').innerText = shortLabel;
             }
 
-            // More clinical/medical colors
-            const colors = ['#10b981', '#06b6d4', '#3b82f6', '#8b5cf6', '#f59e0b', '#f43f5e', '#64748b'];
+            // High contrast techy colors
+            const colors = ['#06b6d4', '#6366f1', '#f43f5e', '#8b5cf6', '#14b8a6', '#f59e0b', '#ec4899'];
 
             myChart = new Chart(ctx, {
                 type: 'doughnut',
@@ -544,35 +496,63 @@
                     labels: labels,
                     datasets: [{
                         data: values,
-                        backgroundColor: colors.slice(0, labels.length).map(c => c + 'E6'),
+                        backgroundColor: colors.slice(0, labels.length).map(c => c + 'CC'), // Add some transparency
                         hoverBackgroundColor: colors.slice(0, labels.length),
                         borderWidth: window.innerWidth < 768 ? 1 : 2,
                         borderColor: '#0f172a',
                         hoverBorderColor: '#ffffff',
                         hoverOffset: 5,
-                        borderRadius: 3
+                        borderRadius: 4
                     }]
                 },
                 options: {
                     maintainAspectRatio: false,
-                    cutout: '70%',
+                    cutout: '72%',
                     plugins: {
                         legend: { display: false },
-                        tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.95)', titleColor: '#fff', bodyColor: '#cbd5e1', borderColor: 'rgba(16, 185, 129, 0.4)', borderWidth: 1, padding: 10, cornerRadius: 8, displayColors: true, bodyFont: { size: 13 }, callbacks: { label: function (context) { return `${context.label}: ${context.raw}% Match`; } } }
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                            titleColor: '#fff',
+                            bodyColor: '#cbd5e1',
+                            borderColor: 'rgba(6, 182, 212, 0.4)',
+                            borderWidth: 1,
+                            padding: 12,
+                            cornerRadius: 8,
+                            displayColors: true,
+                            bodyFont: {
+                                size: 13,
+                                family: "'Outfit', sans-serif"
+                            },
+                            callbacks: {
+                                label: function (context) {
+                                    return ` ${context.label}: ${context.raw}% DNA Match`;
+                                }
+                            }
+                        }
                     },
-                    animation: { animateScale: true, animateRotate: true, duration: 2500, easing: 'easeOutQuart' }
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true,
+                        duration: 2500,
+                        easing: 'easeOutQuart'
+                    }
                 }
             });
 
+            // Delay staggered animations for list items
             let totalAnimationDelay = 0;
             document.getElementById('list').innerHTML = labels.map((k, i) => {
                 const color = colors[i % colors.length];
                 totalAnimationDelay += 150;
+
+                // Representing the visual bar width
                 const w = values[i];
 
                 return `
-                    < div class="relative overflow-hidden p-3 md:p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:bg-slate-700/50 hover:border-emerald-500/30 transition-all duration-300 group" style = "animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards ${totalAnimationDelay}ms; opacity: 0; transform: translateX(30px);" >
+                <div class="relative overflow-hidden p-3 md:p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 hover:bg-slate-700/50 hover:border-cyan-500/30 transition-all duration-300 group" style="animation: slideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards ${totalAnimationDelay}ms; opacity: 0; transform: translateX(30px);">
+                    <!-- Progress Bar Background Map -->
                     <div class="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-[${color}]/10 to-transparent transition-all duration-1000 ease-out z-0" style="width: 0%;" data-target-width="${w}%"></div>
+                    
                     <div class="flex items-center justify-between relative z-10">
                         <div class="flex items-center w-3/4">
                             <div class="relative w-2.5 h-2.5 md:w-3.5 md:h-3.5 mr-3 flex-shrink-0 flex items-center justify-center">
@@ -583,12 +563,15 @@
                         </div>
                         <span class="text-white font-black bg-slate-900 border border-slate-700 px-2 py-1 md:px-3 md:py-1 rounded-md text-xs md:text-sm shadow-inner group-hover:border-[${color}]/50 transition-colors">${values[i]}%</span>
                     </div>
-                </div >`;
+                </div>`;
             }).join('');
 
+            // Trigger bar fill animation
             setTimeout(() => {
                 const bars = document.querySelectorAll('#list > div > div:first-child');
-                bars.forEach(b => { b.style.width = b.getAttribute('data-target-width'); });
+                bars.forEach(b => {
+                    b.style.width = b.getAttribute('data-target-width');
+                });
             }, totalAnimationDelay + 100);
         }
     </script>
