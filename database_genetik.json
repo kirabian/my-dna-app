@@ -1,0 +1,42 @@
+{
+    "rs3094315": {
+        "AA": "East_Asian/Malay",
+        "AG": "Central_Asian",
+        "GG": "European"
+    },
+    "rs12124819": {
+        "AA": "Austronesian/Polynesian",
+        "AG": "Melanesian/Papuan",
+        "GG": "West_Asian"
+    },
+    "rs11562": {
+        "GG": "Han_Chinese",
+        "AG": "Southeast_Asian",
+        "AA": "African"
+    },
+    "rs4477212": {
+        "AA": "Native_American",
+        "AG": "Hispanic",
+        "GG": "European"
+    },
+    "rs7533566": {
+        "GG": "South_Asian/Indian",
+        "AG": "Middle_Eastern",
+        "AA": "African"
+    },
+    "rs13303354": {
+        "GG": "Scandinavian",
+        "AG": "Northern_European",
+        "AA": "Mediterranean"
+    },
+    "rs4970383": {
+        "CC": "African_Yoruba",
+        "CT": "African_Bantu",
+        "TT": "North_African"
+    },
+    "rs1800414": {
+        "AA": "Aboriginal_Australian",
+        "AG": "Oceanian",
+        "GG": "Asian"
+    }
+}
